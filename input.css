@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media screen and (min-width: 767px) {
+    .createPoll-modal-container {
+        height: 94%;
+    }
+}
+
+@media screen and (min-width: 1339px) {
+    .ThreadDataCont {
+        height: 94.5%;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: blue;
+}
