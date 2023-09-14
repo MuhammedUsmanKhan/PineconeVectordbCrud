@@ -1,8 +1,9 @@
 // import React from 'react';
 import { useState, useRef } from "react";
+// import { customAlphabet, nanoid } from 'nanoid'
 import axios from "axios";
 
-const Createpostcard = ({ createPost , createopenModal , setIsMessage}) => {
+const Createpostcard = ({ createPost, createopenModal, setIsMessage }) => {
 
     const postHeadingRef = useRef(null);
     const postDetailsRef = useRef(null);

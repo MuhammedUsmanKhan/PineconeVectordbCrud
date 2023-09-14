@@ -3,10 +3,11 @@ import Modal from '../modal/modal'
 import axios from 'axios'
 import Createcard from '../createcard/card'
 import Postcard from '../postcard/postcard'
+// import { customAlphabet, nanoid } from 'nanoid'
 
 const Home = () => {
 
-    const [posts, setPosts] = useState([]);
+    const [posts, setposts] = useState([]);
     const [postid, setIspostid] = useState(null);
     const [isDelete, setIsDelete] = useState(false);
     const [isCreate, setIsCreate] = useState(false);
@@ -47,7 +48,7 @@ const Home = () => {
 
             const getPost = await axios.get(`/api/v1/posts`)
 
-            setPosts(getPost.data)
+             setposts([...getPost.data.matches])
             console.log(getPost.data);
 
 
@@ -103,10 +104,10 @@ const Home = () => {
         }
         else {
 
-            setIsMessage('Both the input fields must not be empty.') 
+            setIsMessage('Both the input fields must not be empty.')
 
             createopenModal()
-            
+
         }
 
 
@@ -114,16 +115,16 @@ const Home = () => {
 
 
 
-    const verifydelPost = (e) => {
-        console.log(e.target.dataset.postid)
-        const postID = e.target.dataset.postid
+    const verifydelPost = (eachpostID) => {
+        console.log(eachpostID)
+        const postID = eachpostID
         setIspostid(postID)
         deleteopenModal();
     }
 
-    const inpeditPost = (e) => {
-        // console.log(e.target.dataset.postid)
-        const postID = e.target.dataset.postid
+    const inpeditPost = (eachpostID) => {
+        console.log(eachpostID)
+        const postID = eachpostID
         setIspostid(postID)
         updateopenModal();
     }
@@ -167,7 +168,7 @@ const Home = () => {
                     <Createcard createPost={addNewPost} createopenModal={createopenModal} setIsMessage={setIsMessage} />
                 </div>
                 <div className='grid sm:grid-col-1 md:grid-cols-3 '>
-                    {posts.toReversed().map((eachpost, index) => {
+                    {posts?.toReversed().map((eachpost, index) => {
                         return <Postcard key={index} postDetails={eachpost} inpeditPost={inpeditPost} verifydelPost={verifydelPost} />;
                     })}
                 </div>
